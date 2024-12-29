@@ -116,3 +116,15 @@ alter table bonus drop column first_name;
 -- rename the table 
 alter table bonus rename to bouns_emp;
 alter table bouns_emp rename to bonus;
+use org;
+select * from worker;
+-- update
+update worker set first_name='Manavv',last_name='Rastogi' where worker_id=1;
+
+-- update multiple rows
+alter table worker add pincode int not null default 0;
+set sql_safe_updates=0;
+update worker set pincode=10001;
+
+-- delete 
+delete from worker where worker_id=9;
