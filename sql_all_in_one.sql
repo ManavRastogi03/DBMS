@@ -73,3 +73,46 @@ select * from worker where salary is null;
 -- wildcard
 select *from worker where first_name like '%i%';
 select * from worker where first_name like '_i%';
+
+use org;
+
+-- sorting
+select * from worker order by salary;
+
+-- desc
+select * from worker order by salary desc;
+
+-- distinct 
+select distinct department from worker; 
+
+-- data grouping 
+-- find no of emp working in different department 
+-- group by -> count, sum ,avg , min, max
+select department,count(*) from worker group by department;
+
+select department,avg(salary) from worker group by department;
+
+select department,min(salary) from worker group by department;
+
+-- having 
+select department, count(department) from worker group by department having count(DEPARTMENT)>=2;
+
+-- add new column bonus 
+select * from bonus;
+alter TABLE bonus add name_emp varchar(1024);
+
+-- modify the datatype of attribute
+alter table bonus modify name_emp char;
+
+-- desicrbe datatype attribute
+desc bonus;
+
+-- columen rename
+alter table bonus change column name_emp first_name varchar(1024);
+
+-- drop column
+alter table bonus drop column first_name;
+
+-- rename the table 
+alter table bonus rename to bouns_emp;
+alter table bouns_emp rename to bonus;
