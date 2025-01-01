@@ -128,15 +128,3 @@ update worker set pincode=10001;
 
 -- delete 
 delete from worker where worker_id=9;
-
-select * from worker;
-insert into worker values(1,"Manavv","rastogi",1000000,"2014-06-11 09:00:00","hr",10001);
--- replace
-replace into worker(worker_id,first_name) values(01,'manav');
--- replace became insert
-delete from worker where worker_id=01;
-replace into worker(worker_id,first_name) values(9,'manav');
-replace into worker set worker_id=09,first_name="motu";
-replace into worker(worker_id,first_name,last_name) 
-  select worker_id,first_name,last_name 
-        from worker where worker_id=9;
