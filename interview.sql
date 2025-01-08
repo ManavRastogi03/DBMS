@@ -76,3 +76,23 @@ insert into worker_clone select * from worker;
 select * from worker_clone; 
  drop table worker_clone;
  -- 29 write an sql query to fetch interscting records of two table
+ select worker.* from worker inner join worker_clone using(worker_id);
+ select worker.* from worker inner join title on worker.WORKER_ID=title.WORKER_REF_ID;
+ -- write an sql query to show record from one table that another table does not have 
+ select worker.* from worker left join worker_clone using(worker_id) where worker_clone.WORKER_ID is null;
+ -- write an sql query to show the current date and time 
+ -- dual 
+ select curdate();
+ select now();
+ -- write an sql query to show the top n (say 5) records of a table order by desecending salary
+ select * from worker order by SALARY desc limit 5; 
+ -- 33 write an sql query to detremine the nth (say n=5) highest salary from the table 
+ select * from worker order by salary desc limit 4,1;
+ -- 34 write an sql query to determine the fifth highest salary without using limit keyword
+ select * from worker w1
+ where 4=(
+ select count(distinct(w2.salary))
+ from worker w2
+ where w2.salary>=w1.salary
+ );
+ -- 35 write an sql query to fetch the list of emp with the same salary
